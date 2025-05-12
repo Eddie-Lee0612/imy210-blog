@@ -1,9 +1,20 @@
 {
+    "env": {
+      "browser": true,
+      "es2021": true,
+      "node": true
+    },
     "extends": [
+      "plugin:vue/vue3-recommended",
       "@nuxtjs",
       "plugin:nuxt/recommended"
     ],
     "rules": {
-      "vue/multi-word-component-names": "off"
+      "vue/multi-word-component-names": "off",
+      "semi": ["error", "never"],
+      "indent": ["error", 2],
+      "vue/html-indent": ["warn", 2],
+      "vue/singleline-html-element-content-newline": "off",
+      "no-undef": ["error", { "typeof": true }]
     }
   }

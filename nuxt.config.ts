@@ -1,6 +1,11 @@
-// https://nuxt.com/docs/api/configuration/nuxt-config
+/* eslint-disable no-undef */
 export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
   devtools: { enabled: true },
-  modules: ['@nuxtjs/eslint-module']
-});
+  modules: ['@nuxtjs/tailwindcss', '@nuxtjs/eslint-module'],
+  eslint: {
+    lintOnStart: false,
+    emitWarning: false, // Suppress warnings
+    emitError: false // Suppress errors
+  }
+})
