@@ -13,6 +13,13 @@
     <div v-if="posts.length">
       <div v-for="post in filteredPosts" :key="post.id" class="mb-4">
         <h2 class="text-xl font-semibold">{{ post.title }}</h2>
+        <p class="text-gray-500 italic">By {{ post.author }}</p>
+        <div class="text-gray-600">
+          <!-- Display content preview -->
+          <p v-if="post.content && post.content[0] && post.content[0].children">
+            {{ post.content[0].children[0].text.slice(0, 100) }}...
+          </p>
+        </div>
         <p class="text-gray-600">{{ post.snippet }}</p>
       </div>
     </div>
