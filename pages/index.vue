@@ -9,11 +9,11 @@
     </select>
     <div v-if="posts.length">
       <div v-for="post in filteredPosts" :key="post.id" class="mb-4">
-        <h2 class="text-xl font-semibold">{{ post.attributes.title }}</h2>
-        <p class="text-gray-600">{{ post.attributes.snippet }}</p>
+        <h2 class="text-xl font-semibold">{{ post.title }}</h2>
+        <p class="text-gray-600">{{ post.snippet }}</p>
       </div>
     </div>
-    <p v-else class="text-gray-600">No posts yet. Add some in Strapi!</p>
+    <p v-else class="text-gray-600">No posts available. Check Strapi backend.</p>
   </div>
 </template>
 
@@ -30,16 +30,19 @@ export default {
   computed: {
     filteredPosts() {
       if (!this.selectedCategory) return this.posts
-      return this.posts.filter(post => post.attributes.category === this.selectedCategory)
+      return this.posts.filter(post => post.category === this.selectedCategory)
     }
   },
   async created() {
     try {
-      const response = await fetch('http://localhost:1337/api/blog-posts')
-      const { data } = await response.json()
-      this.posts = data
+      const response = await fetch('http://127.0.0.1:1337/api/blog-posts')
+      if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`)
+      const result = await response.json()
+      console.log('API Response:', result)
+      this.posts = result.data || []
     } catch (error) {
       console.error('Error fetching posts:', error)
+      this.posts = []
     }
   }
 }
