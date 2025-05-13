@@ -1,6 +1,9 @@
 <template>
   <div class="container mx-auto p-4">
     <h1 class="text-3xl font-bold text-blue-600">Blog Posts</h1>
+    <nav class="mb-4">
+      <nuxt-link to="/search" class="text-blue-500 hover:underline">Go to Search</nuxt-link>
+    </nav>
     <select v-model="selectedCategory" class="border p-2 mb-4 rounded">
       <option value="">All Categories</option>
       <option v-for="category in categories" :key="category" :value="category">
