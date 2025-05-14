@@ -34,7 +34,7 @@ export default {
     return {
       posts: [],
       selectedCategory: '',
-      categories: ['Tech', 'Lifestyle', 'News']
+      categories: ['Tech', 'Lifestyle', 'News', 'Health']
     }
   },
   computed: {
